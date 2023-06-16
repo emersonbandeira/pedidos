@@ -1,0 +1,23 @@
+<h2>Pedidos</h2>   
+<h3><a  routerLink="/orders/new">Novo Pedido</a></h3>
+
+
+
+<hr>
+
+
+<mat-nav-list>
+    <a mat-list-item [routerLink]="['/orders', order.id]" 
+        *ngFor="let order of orders" (mouseover)="showDetails(order.id)"
+         (mouseout)="hideDetails()">
+         <span>{{ order.title }}</span>
+         <span>{{ order.description }}</span>
+        <!--
+         <div mat-list-avatar mat-list-icon *ngIf="order.id === highlightOrder">       
+            <mat-icon>description</mat-icon>
+        </div>
+        -->
+        <mat-divider>sdf</mat-divider>
+    </a>
+</mat-nav-list>
+

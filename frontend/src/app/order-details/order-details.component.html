@@ -1,0 +1,16 @@
+<h2>Detalhes do pedido</h2>
+<div>
+    <label>Titulo:</label>
+    <input type="text" [(ngModel)]="order.title" [disabled]="!editing">
+</div>
+<div>
+    <label>Descrição:</label>
+    <textarea [(ngModel)]="order.description" [disabled]="!editing"></textarea>
+</div>
+<div>
+    <button (click)="editOrder()" *ngIf="!editing" >Editar</button>
+    <button (click)="saveOrder()" *ngIf="editing">Salvar</button>
+    <button (click)="cancelEditOrder()" *ngIf="editing" >Cancelar edição</button>    
+    <button (click)="deleteOrder()">Excluir</button>
+    <button (click)="goBack()">Voltar</button>
+</div>

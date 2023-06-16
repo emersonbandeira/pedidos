@@ -1,0 +1,50 @@
+h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 8px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    background-color: rgb(225, 229, 240);
+  }
+  
+  a:hover {
+    background-color: #b6d5e7;
+    color: #0f225e;
+  }
+ 
+ 
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  mat-list-item {
+    background-color: rgb(225, 229, 240);
+    cursor: pointer;
+  }
+
+  mat-list-item:hover {
+    background-color: #d4ecfa;
+    cursor: pointer;
+  }
+  
