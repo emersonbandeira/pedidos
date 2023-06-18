@@ -1,16 +1,16 @@
 <h2>Novo Pedido</h2>
-<form (ngSubmit)="createOrder()">
-    <div>
-        <label>Titulo:</label>
-        <input type="text" [(ngModel)]="newOrder.title" name="title" required>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="title">Titulo:</label>
+        <input type="text" id="title" class="form-control" [(ngModel)]="order.title" name="title" required>
 
     </div>
-    <div>
-        <label>Descrição:</label>
-        <textarea [(ngModel)]="newOrder.description" name="description" required></textarea>
+    <div class="form-group">
+        <label for="description">Descrição:</label>
+        <textarea id="description" class="form-control" [(ngModel)]="order.description" name="description" required></textarea>
     </div>
     <div>
-        <button type="submit">Salvar</button>
+        <button type="submit" class="btn btn-primary">Enviar pedido</button>
         <button type="button" (click)="goBack()">Voltar</button>
     </div>
 </form>

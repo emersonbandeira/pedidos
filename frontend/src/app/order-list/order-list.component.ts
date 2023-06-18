@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Order } from '../order.model';import { environmentt } from '../environment';
+
 
 @Component({
   selector: 'app-order-list',
@@ -8,23 +10,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class OrderListComponent implements OnInit {
 
-  orders: any[] = [];
+  orders: Order[] = [];
 
-  highlightOrder: string | null = null;
+  highlightOrder: number | null = null;
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient ) {}
 
   ngOnInit(){
-    this.getOrders();
+    console.log('OrderList - onInit');
+
+    this.http.get<Order[]>('http://localhost:3000/api/v2/orders').subscribe(
+      (orders) => {
+        this.orders = orders;
+      },
+      (error) => {
+        console.error('Erro ao obter os pedidos', error);
+      }
+    );
   }
 
   getOrders(){
-    this.http.get<any[]>('http://localhost:3000/api/orders').subscribe((data) => {
-      this.orders = data;
-    });
+    console.log('OrderList - getOrders');
+
+    this.http.get<Order[]>('http://localhost:3000/api/v2/orders').subscribe(
+      (orders) => {
+        this.orders = orders;
+      },
+      (error) => {
+        console.error('Erro ao obter os pedidos', error);
+      }
+    );
   }
 
-  showDetails(orderId: string) {
+  showDetails(orderId: number) {
     this.highlightOrder = orderId;
   }
 

@@ -4,4 +4,5 @@
 # /home/mmdev/projetos/pedidos/frontend/node_modules
 # /home/mmdev/projetos/pedidos/backend/node_modules
 
-/home/mmdev/projetos/pedidos/frontend/.angular
+/home/mmdev/projetos/pedidos/frontend/.angular/
+.angular/

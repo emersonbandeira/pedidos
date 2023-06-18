@@ -13,13 +13,15 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderCartComponent } from './order-cart/order-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderListComponent,
     OrderFormComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    OrderCartComponent
   ],
   imports: [
     BrowserModule,

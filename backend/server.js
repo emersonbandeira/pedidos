@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const Order = require('./Order');
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -69,6 +71,50 @@ app.delete('/api/orders/:id', (req,res) => {
     res.json({ message: 'Pedido excluido com sucesso!'});
 });
 
+// ----------------------------------------------------------------------
+
+app.post('/api/v2/orders', async(req, res) =>{
+    try {
+        const { title, description } = req.body;
+
+        const order = await Order.create({ title, description });
+
+        res.status(200).json(order);
+    } catch (error) {
+        console.error('Erro ao criar o pedido: ', error);
+        res.status(500).send("Erro ao criar o pedido");
+    }
+});
+
+
+app.get('/api/v2/orders', async (req,res) => {
+    console.log('-----------------------------------------------------------------------')
+    console.log('========> INICIO get all v2')
+
+    try {
+        const orders = await Order.findAll();
+        res.json(orders);
+    } catch ( error ) {
+        console.error('Erro ao obter pedidos', error);
+        res.status(500);
+    }
+});
+
+app.get('/api/v2/order/:orderId', async (req, res) => {
+    try {
+      const orderId = req.params.orderId;
+      const order = await Order.findByPk(orderId);
+      if (order) {
+        res.json(order);
+      } else {
+        res.status(404).json({ error: 'Pedido não encontrado' });
+      }
+    } catch (error) {
+      console.error('Erro ao obter o pedido:', error);
+      res.status(500).json({ error: 'Erro ao obter o pedido' });
+    }
+  });
+  
 const port = 3000;
 
 app.listen( port, () => {

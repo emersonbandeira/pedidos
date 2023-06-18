@@ -24,10 +24,11 @@ input {
 }
  
 textarea {
-  border: 2px solid #66f8ec;
+  border: 2px solid #060561;
   background-color: rgb(225, 229, 240);
   padding: 2px;
   border-radius: 4px;
+  width: 80%;
 }
 
 

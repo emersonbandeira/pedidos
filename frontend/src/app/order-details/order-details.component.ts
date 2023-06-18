@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { Order } from '../order.model';
 
 @Component({
   selector: 'app-order-details',
@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class OrderDetailsComponent implements OnInit {
+
+  orderDetails: Order | undefined;
 
   order: any = {};
 
@@ -30,14 +32,14 @@ export class OrderDetailsComponent implements OnInit {
     const orderId = this.route.snapshot.paramMap.get('id'); 
     console.log('get Order ()...' + this.editing);
     console.log(orderId);
-    this.http.get<any>('http://localhost:3000/api/orders/' + orderId ).subscribe((data) => { 
+    this.http.get<any>('http://localhost:3000/api/v2/order/' + orderId ).subscribe((data) => { 
       this.order = data; 
     }); 
   }
 
   deleteOrder() {
     const orderId = this.route.snapshot.paramMap.get('id');
-    this.http.delete<any>('http://localhost:3000/api/orders/${orderId}').subscribe(() => {
+    this.http.delete<any>('http://localhost:3000/api/order/${orderId}').subscribe(() => {
     this.router.navigate(['/orders']);
     });
   }
