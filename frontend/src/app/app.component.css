@@ -17,7 +17,7 @@ h2 {
   }
 
   button {
-    background-color: #007bff;
+    background-color: #0f71da;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -29,5 +29,8 @@ h2 {
     background-color: #0056b3;
   }
   
+  .app-geral {
+    background-color: rgb(217, 228, 238);
+  }
   
   

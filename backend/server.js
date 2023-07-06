@@ -75,9 +75,11 @@ app.delete('/api/orders/:id', (req,res) => {
 
 app.post('/api/v2/orders', async(req, res) =>{
     try {
-        const { title, description } = req.body;
+        const { title, description, uuid, selected } = req.body;
 
-        const order = await Order.create({ title, description });
+        console.log('post v2 -> uuid:' + uuid);
+
+        const order = await Order.create({ title, description, uuid, selected });
 
         res.status(200).json(order);
     } catch (error) {

@@ -1,0 +1,51 @@
+<h3>Dashboard</h3>
+<div class="mat-elevation-z8">
+
+<mat-drawer-container class="dashboard-container" autosize>
+    <mat-drawer #drawer class="dashboard-sidenav" mode="side">
+        <div class="menu">
+            <ul>
+                <li>
+                    <mat-icon aria-hidden="false" aria-label="Home" fontIcon="home"></mat-icon>Início
+                </li>
+                <li>
+                    <mat-icon (click)="newOrder()">note_add</mat-icon>Novo
+                </li>
+                <li>
+                    <mat-icon>find_in_page</mat-icon>Pesquisar
+                </li>
+            </ul>
+        </div>
+        <div>
+            <p>Auto-resizing sidenav</p>
+            <p *ngIf="showFiller">Mensagem</p>
+            <button (click)="showFiller = !showFiller" mat-raised-button>
+              Toggle extra text
+            </button>      
+        </div>
+
+
+      <div>
+        <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+            <mat-chip-option *ngFor="let chip of availableColors" selected [color]="chip.color">
+              {{chip.name}}
+            </mat-chip-option>
+          </mat-chip-listbox>
+      </div>
+
+    </mat-drawer>
+  
+    <div class="dashboard-sidenav-content">
+        <div class="dashboard-split">
+            <button type="button" mat-button (click)="drawer.toggle()">
+                <mat-icon aria-hidden="false" aria-label="Toggle sidenav" fontIcon="vertical_split"></mat-icon>
+            </button>
+        </div>
+        
+        <div>
+            <app-order-list></app-order-list>
+        </div>
+    </div>
+  
+  </mat-drawer-container>
+</div>

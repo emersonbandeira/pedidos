@@ -1,20 +1,75 @@
-<h2>Pedidos</h2>   
-<h3><a routerLink="/orders/new">Novo Pedido</a> - <a routerLink="/cart">Carrinho</a></h3>
-<hr>
+<h4>Lista de Pedidos</h4> 
+<div class="mat-elevation-z8">  
+<table mat-table [dataSource]="orders" >
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let order; columns: displayedColumns"></mat-row>
 
+        <ng-container matColumnDef="id">
+            
+            <mat-header-cell *matHeaderCellDef >Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                {{row.id}}
+                <mat-icon>launch</mat-icon>
+                <mat-icon>info</mat-icon>
+                <mat-icon>get_app</mat-icon>
+            </mat-cell>
 
-<mat-nav-list>
-    <a mat-list-item [routerLink]="['/orders', order.id]" 
-        *ngFor="let order of orders" (mouseover)="showDetails(order.id)"
-         (mouseout)="hideDetails()">
-         <span>{{ order.title }}</span>
-         <span>{{ order.description }}</span>
-        <!--
-         <div mat-list-avatar mat-list-icon *ngIf="order.id === highlightOrder">       
-            <mat-icon>description</mat-icon>
-        </div>
-        -->
-        <mat-divider>sdf</mat-divider>
-    </a>
-</mat-nav-list>
+        </ng-container>
 
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef >title</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.title}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef >description</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.description}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="uuid">
+            <mat-header-cell *matHeaderCellDef >uuid</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.uuid}}</mat-cell>
+        </ng-container>
+
+        <!-- Coluna do Checkbox -->
+        <ng-container matColumnDef="selected">
+
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+                
+            </mat-cell>
+            
+            
+                <mat-checkbox  
+                    (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+            
+                
+        </ng-container>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    aria-label="Select page of orders">
+</mat-paginator>
+
+</div>

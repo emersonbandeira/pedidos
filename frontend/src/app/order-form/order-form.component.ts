@@ -26,7 +26,10 @@ export class OrderFormComponent {
   }
 */
   onSubmit() {
+    console.log('onSubmit OrderForm');
     this.order.uuid = uuid();
+    this.order.selected = false;
+    console.log('uuid:' + this.order.uuid + ' selected:' + this.order.selected );
     this.http.post('http://localhost:3000/api/v2/orders/', this.order).subscribe(
       (response) => {
         console.log('Pedido enviado com sucesso:', response);
@@ -35,7 +38,7 @@ export class OrderFormComponent {
         console.error('Erro ao enviar o pedido', error );
       }
     );
-    this.router.navigate(['/orders']);
+    this.router.navigate(['/']);
   }
 
   goBack() {

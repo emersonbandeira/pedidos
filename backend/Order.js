@@ -14,6 +14,10 @@ const Order = sequelize.define('Order', {
     uuid: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    selected: {
+        type: Boolean,
+        allowNull: false    
     }
 });
 

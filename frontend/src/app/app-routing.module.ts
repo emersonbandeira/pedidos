@@ -5,9 +5,11 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrderCartComponent } from './order-cart/order-cart.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'/orders', pathMatch: 'full' },
+  //{ path: '', redirectTo:'/orders', pathMatch: 'full' },
+  { path: '', component: DashboardComponent},
   { path: 'orders', component: OrderListComponent },
   { path: 'orders/new', component: OrderFormComponent },
   { path: 'orders/:id', component: OrderDetailsComponent },

@@ -1,0 +1,37 @@
+.dashboard-container {
+    width: max-content;
+    height: max-content;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    
+  }
+  
+  .dashboard-sidenav-content {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dashboard-sidenav {
+    padding: 10px;
+    background-color: aliceblue;
+  }
+  
+  .dashboard-split {
+    vertical-align: top;
+    background-color: lightblue;
+  }
+  .menu ul {
+    text-decoration: none;
+    list-style: none;
+    vertical-align: top;
+  }
+
+  .menu ul li {
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .menu ul li :hover {
+    cursor: pointer;
+  }

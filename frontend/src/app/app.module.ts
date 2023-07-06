@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,11 +15,11 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderCartComponent } from './order-cart/order-cart.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderListComponent,
     OrderFormComponent,
     OrderDetailsComponent,
     OrderCartComponent
@@ -31,7 +32,8 @@ import { OrderCartComponent } from './order-cart/order-cart.component';
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
